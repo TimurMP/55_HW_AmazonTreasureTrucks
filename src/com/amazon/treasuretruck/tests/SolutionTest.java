@@ -1,15 +1,14 @@
 package com.amazon.treasuretruck.tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import com.amazon.treasuretruck.service.Solution;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.amazon.treasuretruck.service.Solution;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class SolutionTest {
