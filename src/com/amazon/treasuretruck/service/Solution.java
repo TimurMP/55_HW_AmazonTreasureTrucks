@@ -5,9 +5,6 @@ import java.util.List;
 
 public class Solution {
 
-
-
-
 	public int numberAmazonTreasureTrucks(int rows, int column, List<List<Integer>> grid) {
 		int total = 0;
 		for (int i = 0; i < grid.size(); i++) {
@@ -51,9 +48,7 @@ public class Solution {
 				if (grid.get(k).get(l) == 1){
 //					grid.get(k).set(l, 5);
 					traverse(k, l, rows, column,grid);
-
 				}
-
 			}
 		}
 
