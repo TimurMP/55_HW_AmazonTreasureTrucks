@@ -1,0 +1,32 @@
+CREATE DATABASE MyDB;
+USE MyDB
+CREATE TABLE weekdays(number INT PRIMARY KEY AUTO_INCREMENT, names VARCHAR(30));
+INSERT INTO weekdays(names)
+    -> VALUES('Sunday');
+INSERT INTO weekdays(names) VALUES('Monday'),('Tuesday'),('Wednesday'),('Thursday'),('Friday'),('Saturday');
+SELECT * FROM weekdays;
+
+mysql> SELECT * FROM weekdays;
++--------+-----------+
+| number | names     |
++--------+-----------+
+|      1 | Sunday    |
+|      2 | Monday    |
+|      3 | Tuesday   |
+|      4 | Wednesday |
+|      5 | Thursday  |
+|      6 | Friday    |
+|      7 | Saturday  |
++--------+-----------+
+7 rows in set (0.00 sec)
+
+
+mysql> SELECT * FROM weekdays WHERE CHAR_LENGTH(names) < 7;
++--------+--------+
+| number | names  |
++--------+--------+
+|      1 | Sunday |
+|      2 | Monday |
+|      6 | Friday |
++--------+--------+
+3 rows in set (0.00 sec)
