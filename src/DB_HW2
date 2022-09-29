@@ -1,0 +1,11 @@
+1) Display 'name' and 'quantity' of all products with 'productCode' equal 'PEC'
+
+mysql> select name, quantity from products WHERE productCode = 'PEC';
++-----------+----------+
+| name      | quantity |
++-----------+----------+
+| Pencil 2B |    10000 |
+| Pencil 2H |     8000 |
++-----------+----------+
+2 rows in set (0.00 sec)
+
