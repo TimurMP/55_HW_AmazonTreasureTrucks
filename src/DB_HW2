@@ -9,3 +9,104 @@ mysql> select name, quantity from products WHERE productCode = 'PEC';
 +-----------+----------+
 2 rows in set (0.00 sec)
 
+
+
+
+2) Display 'productID' of all products, having word 'Blue' in its 'name'
+
+mysql> SELECT productID FROM products WHERE name LIKE  '%Blue%';
++-----------+
+| productID |
++-----------+
+|      1002 |
++-----------+
+1 row in set (0.00 sec)
+
+
+
+
+
+3) Display 'name' of all products having letter '2' in its 'name'
+   and 'quantity' greater than 9000.
+
+mysql> SELECT name FROM products WHERE name LIKE  '%2%' AND quantity > 9000 ;
++-----------+
+| name      |
++-----------+
+| Pencil 2B |
++-----------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+4) Display name and price of all products with quantity between 4000 and 9000.
+   Order output in alphabetical order by name
+
+
+mysql> SELECT name, price FROM products WHERE (quantity BETWEEN 4000 AND 9000)  ORDER BY name;
++-----------+-------+
+| name      | price |
++-----------+-------+
+| Pen Blue  |  1.25 |
+| Pen Red   |  1.23 |
+| Pencil 2H |  0.49 |
++-----------+-------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+5) Display all existing information about products having price 0.48, 0.49 or 1.25
+
+mysql> SELECT * FROM products WHERE price IN (0.48, 0.49, 1.25);
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      1002 | PEN         | Pen Blue  |     8000 |  1.25 |
+|      1003 | PEN         | Pen Black |     2000 |  1.25 |
+|      1004 | PEC         | Pencil 2B |    10000 |  0.48 |
+|      1005 | PEC         | Pencil 2H |     8000 |  0.49 |
++-----------+-------------+-----------+----------+-------+
+4 rows in set (0.00 sec)
+
+
+
+
+6) Display the name, price and quantity of 3 most expensive products.
+
+mysql> SELECT name, price, quantity FROM products ORDER BY price DESC LIMIT 3;
++--------------+-------+----------+
+| name         | price | quantity |
++--------------+-------+----------+
+| Marker Black |  2.49 |      700 |
+| Pen Blue     |  1.25 |     8000 |
+| Pen Black    |  1.25 |     2000 |
++--------------+-------+----------+
+3 rows in set (0.00 sec)
+
+
+
+
+
+7) Display total quantity, total cost and average price of products in table `products`.
+   (The cost is quantity * price)
+
+
+
+
+
+8*) [Optional] Display list of all productCode-s existing in table `products`.
+   The list would be without repetitions (DISTINCT) and ordered alphabetically.
+
+9*) [Optional] Build for all products report with following columns:
+      'Product Description', 'Item Price', 'Quantity', 'Cost'.
+   Each row looks as follows:
+       PEN - Pen Red          1.23          5000       6150
+       ...
+   The cost equal price * quantity.
+   Sort the output ascending by  calculated 'Cost' .
