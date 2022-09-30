@@ -97,11 +97,39 @@ mysql> SELECT name, price, quantity FROM products ORDER BY price DESC LIMIT 3;
    (The cost is quantity * price)
 
 
+mysql> SELECT SUM(quantity) AS 'Total Quantity',
+ SUM(price*quantity) AS 'Total Cost',
+ AVG(price) AS 'Average Price'
+ FROM products;
+
++----------------+------------+---------------+
+| Total Quantity | Total Cost | Average Price |
++----------------+------------+---------------+
+|          33700 |   29113.00 |      1.198333 |
++----------------+------------+---------------+
+1 row in set (0.00 sec)
+
+
 
 
 
 8*) [Optional] Display list of all productCode-s existing in table `products`.
    The list would be without repetitions (DISTINCT) and ordered alphabetically.
+
+   mysql> SELECT DISTINCT productCode AS 'Products'
+   FROM products ORDER BY productCode;
+
+   +----------+
+   | Products |
+   +----------+
+   | MRK      |
+   | PEC      |
+   | PEN      |
+   +----------+
+   3 rows in set (0.00 sec)
+
+
+
 
 9*) [Optional] Build for all products report with following columns:
       'Product Description', 'Item Price', 'Quantity', 'Cost'.
@@ -110,3 +138,27 @@ mysql> SELECT name, price, quantity FROM products ORDER BY price DESC LIMIT 3;
        ...
    The cost equal price * quantity.
    Sort the output ascending by  calculated 'Cost' .
+
+
+
+
+
+
+   mysql> SELECT CONCAT(productCode, '-', name) AS 'Product Description',
+   price AS 'Item Price',
+   quantity,
+   price*quantity AS Cost
+   FROM products;
+
+   +---------------------+------------+----------+----------+
+   | Product Description | Item Price | quantity | Cost     |
+   +---------------------+------------+----------+----------+
+   | PEN-Pen Red         |       1.23 |     5000 |  6150.00 |
+   | PEN-Pen Blue        |       1.25 |     8000 | 10000.00 |
+   | PEN-Pen Black       |       1.25 |     2000 |  2500.00 |
+   | PEC-Pencil 2B       |       0.48 |    10000 |  4800.00 |
+   | PEC-Pencil 2H       |       0.49 |     8000 |  3920.00 |
+   | MRK-Marker Black    |       2.49 |      700 |  1743.00 |
+   +---------------------+------------+----------+----------+
+   6 rows in set (0.00 sec)
+
