@@ -1,0 +1,43 @@
+1) Show all information about products, supplied by 'ABC Traders'
+
+mysql> SELECT * FROM products p join suppliers s on p.supplierID = s.supplierID where s.name = 'ABC Traders';
++-----------+-------------+-----------+----------+-------+------------+------------+-------------+----------+
+| productID | productCode | name      | quantity | price | supplierID | supplierID | name        | phone    |
++-----------+-------------+-----------+----------+-------+------------+------------+-------------+----------+
+|      1001 | PEN         | Pen Red   |     5000 |  1.23 |        501 |        501 | ABC Traders | 88881111 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.25 |        501 |        501 | ABC Traders | 88881111 |
+|      1003 | PEN         | Pen Black |     2000 |  1.25 |        501 |        501 | ABC Traders | 88881111 |
++-----------+-------------+-----------+----------+-------+------------+------------+-------------+----------+
+3 rows in set (0.01 sec)
+
+
+
+
+
+
+
+2) Show Total Cost of all products supplied by suppliers: 'XYZ Company', 'QQ Corp'.
+
+
+mysql> SELECT SUM(p.price*p.quantity)
+AS 'Total Cost By Suppliers' FROM products p JOIN suppliers s ON p.supplierID = s.supplierID
+WHERE s.name IN ('XYZ Company', 'QQ
++-------------------------+
+| Total Cost By Suppliers |
++-------------------------+
+|                34863.00 |
++-------------------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+3) Show average price of supplying products per supplier.
+4) Show the information about supplier, which supplies maximal number of products by names:
+   `Supplier Name`   `Supplier Phone`  `Product Names`
+5) Find the supplier of cheapest Marker (by code MRK) and print its name, phone and Marker price
+
+6*) Show the information about supplier, which supplies maximal number of products by `productCode`:
+   `Supplier Name`   `Supplier Phone`  `Number Of Product Codes`
