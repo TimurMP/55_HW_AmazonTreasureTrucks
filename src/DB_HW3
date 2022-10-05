@@ -35,9 +35,62 @@ WHERE s.name IN ('XYZ Company', 'QQ
 
 
 3) Show average price of supplying products per supplier.
+
+mysql> SELECT AVG(p.price), s.name FROM products p join suppliers s on p.supplierID = s.supplierID GROUP BY s.name;
++--------------+-------------+
+| AVG(p.price) | name        |
++--------------+-------------+
+|     1.243333 | ABC Traders |
+|   166.990000 | XYZ Company |
+|     2.423333 | QQ Corp     |
++--------------+-------------+
+3 rows in set (0.01 sec)
+
+
+
+
 4) Show the information about supplier, which supplies maximal number of products by names:
    `Supplier Name`   `Supplier Phone`  `Product Names`
+
+
+mysql> SELECT DISTINCT (s.name) AS `Supplier Name`,
+s.phone AS `Supplier Phone`,
+count(p.name) AS `Product Names` FROM products p join suppliers
+s on p.supplierID = s.supplierID GROUP BY `Supplier Name`, `Supplier Phone` Limit 1;
++---------------+----------------+---------------+
+| Supplier Name | Supplier Phone | Product Names |
++---------------+----------------+---------------+
+| ABC Traders   | 88881111       |             4 |
++---------------+----------------+---------------+
+1 row in set (0.00 sec)
+
+
+
+
+
+
+
+
 5) Find the supplier of cheapest Marker (by code MRK) and print its name, phone and Marker price
+
+mysql> SELECT MIN(p.price) AS Price,
+(s.name) AS `Supplier Name`,
+s.phone AS `Supplier Phone`
+FROM products p, suppliers s WHERE p.supplierID = s.supplierID
+AND (p.productCode LIKE ('MRK'))
+GROUP BY `Supplier Name`, `Supplier Phone`;
+
++-------+---------------+----------------+
+| Price | Supplier Name | Supplier Phone |
++-------+---------------+----------------+
+|  2.39 | QQ Corp       | 88883333       |
++-------+---------------+----------------+
+1 row in set (0.01 sec)
+
+
+
+
+
 
 6*) Show the information about supplier, which supplies maximal number of products by `productCode`:
    `Supplier Name`   `Supplier Phone`  `Number Of Product Codes`
