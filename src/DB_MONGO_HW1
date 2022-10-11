@@ -1,0 +1,42 @@
+1. Find all pets with name beginning with five started characters of alphabets;
+
+java_2022> db.pets.find( { name: /^A|^B|^C|^D|^E/ })
+[
+  {
+    _id: ObjectId("63456d39b8060b118ffeb79c"),
+    name: 'Boris',
+    type: 'Cat',
+    age: 3,
+    breed: 'Siam'
+  },
+  {
+    _id: ObjectId("63456ecdb8060b118ffeb79f"),
+    name: 'Ace',
+    type: 'Dog',
+    age: 5
+  }
+]
+
+
+
+2*. Find third and fourth from pets by ages.
+
+java_2022> db.pets.find({}).sort({age: 1}).skip(2).limit(2);
+
+[
+  {
+    _id: ObjectId("63456ecdb8060b118ffeb79f"),
+    name: 'Ace',
+    type: 'Dog',
+    age: 5
+  },
+  {
+    _id: ObjectId("63456d3ab8060b118ffeb79e"),
+    name: 'Jerry',
+    type: 'Mouse',
+    age: 82
+  }
+]
+
+
+
