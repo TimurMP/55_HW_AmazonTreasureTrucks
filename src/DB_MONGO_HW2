@@ -1,5 +1,4 @@
-java_2022> db.students.find({scores: {$elemMatch: {type: 'exam', score:{$gt: 90}}}})
-
+java_2022> db.students.find({scores: {$elemMatch: {type: 'exam', score:{$gt: 90}}}}).toArray()
 
 
 [
