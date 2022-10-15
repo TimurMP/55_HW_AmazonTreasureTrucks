@@ -1,0 +1,25 @@
+java_2022> db.students.find({scores: {$elemMatch: {type: 'exam', score:{$gt: 90}}}})
+
+
+
+[
+  {
+    _id: 7,
+    name: 'Salena Olmos',
+    scores: [
+      { type: 'exam', score: 90.37826509157176 },
+      { type: 'quiz', score: 42.48780666956811 },
+      { type: 'homework', score: 67.18328596625217 },
+      { type: 'homework', score: 96.52986171633331 }
+    ]
+  },
+  {
+    _id: 9,
+    name: 'Sanda Ryba',
+    scores: [
+      { type: 'exam', score: 97.00509953654694 },
+      { type: 'quiz', score: 97.80449632538915 },
+      { type: 'homework', score: 12.47568017314781 },
+      { type: 'homework', score: 25.27368532432955 }
+    ]
+  }.....
